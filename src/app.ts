@@ -1,8 +1,13 @@
-import express from 'express'
-import 'express-async-errors'
+import express from 'express';
+import 'express-async-errors';
+import { router as routes } from './routes';
 
-const app = express()
+import { errorHandler } from './middlewares/errorHandler';
 
-app.use(express.json())
+const app = express();
 
-app.listen(3000, () => console.log('Server is up running!'))
+app.use(express.json());
+app.use(routes);
+app.use(errorHandler);
+
+app.listen(3000, () => console.log('Server is up running!'));
