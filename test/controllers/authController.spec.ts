@@ -11,30 +11,28 @@ describe('AuthUserController', () => {
     authUserController = new AuthController();
   });
 
-  describe('successful', () => {
-    it('should be defined', () => {
-      expect(authUserController).toBeDefined();
-    });
+  it('should be defined', () => {
+    expect(authUserController).toBeDefined();
+  });
 
-    it('should called auth service', async () => {
-      const response = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1aXpmZWxpcHBldmllaXJhQG91dGxvb2suY29tIiwicGFzc3dvcmQiOiIxMjMifQ.UdXJ_Lvmc6_4_YQktu7xEay_PeP23_ruhL0Q2j3MGLw';
-      const req = {
-        body: {
-          email: 'test@test.com',
-          password: '123'
-        }
-      };
+  it('should called auth service', async () => {
+    const result = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1aXpmZWxpcHBldmllaXJhQG91dGxvb2suY29tIiwicGFzc3dvcmQiOiIxMjMifQ.UdXJ_Lvmc6_4_YQktu7xEay_PeP23_ruhL0Q2j3MGLw';
+    const req = {
+      body: {
+        email: 'test@test.com',
+        password: '123'
+      }
+    };
 
-      const res = {
-        json: jest.fn()
-      };
+    const res = {
+      json: jest.fn()
+    };
 
-      (login as any).mockResolvedValue(response);
+    (login as any).mockResolvedValue(result);
 
-      await authUserController.login(req as any, res as any);
+    await authUserController.login(req as any, res as any);
 
-      expect(login).toHaveBeenCalledWith(req.body);
-      expect(res.json).toHaveBeenCalledWith({ token: response });
-    });
+    expect(login).toHaveBeenCalledWith(req.body);
+    expect(res.json).toHaveBeenCalledWith({ token: result });
   });
 });
