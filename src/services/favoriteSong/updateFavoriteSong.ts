@@ -1,4 +1,4 @@
-import db from "../../database/prismaClient";
+import db from '../../database/prismaClient';
 
 interface IUpdateFavoriteSong {
   id: string
@@ -17,9 +17,9 @@ async function updateFavoriteSong({ id, songName, artist, album }: IUpdateFavori
       artist,
       album,
     }
-  })
+  });
 
-  return favoriteSongUpdated
+  return favoriteSongUpdated;
 }
 
 export { updateFavoriteSong };
