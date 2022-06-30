@@ -19,7 +19,7 @@ describe('HealthCheckController', () => {
     expect(healthCheckController).toBeDefined();
   });
 
-  it.only('should return the correct status code and message', async () => {
+  it('should return the correct status code and message', async () => {
     const mockedResult = {
       message: 'up running!'
     };
