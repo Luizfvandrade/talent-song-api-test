@@ -24,9 +24,9 @@ describe('HealthCheckController', () => {
       message: 'up running!'
     };
 
-    const mockedRequest = {};
+    const mockedRequest: any = {};
 
-    await healthCheckController.status(mockedRequest as any, mockedResponse as any);
+    await healthCheckController.status(mockedRequest, mockedResponse);
 
     expect(mockedResponse.json).toHaveBeenCalledWith(mockedResult);
     expect(mockedResponse.status).toHaveBeenCalledWith(200);

@@ -1,5 +1,4 @@
 jest.mock('../../src/services/user');
-import { Request, Response } from 'express';
 
 import { UserController } from '../../src/controllers/userController';
 
@@ -22,7 +21,7 @@ describe('userController', () => {
       'email': 'test@test.com'
     };
 
-    const mockedRequest: Partial<Request> = {
+    const mockedRequest: any = {
       body: {
         email: 'test@test.com',
         password: '123'
@@ -38,7 +37,7 @@ describe('userController', () => {
 
     (create as any).mockResolvedValue(mockedResult);
 
-    await userController.create(mockedRequest as Request, mockedResponse as Response);
+    await userController.create(mockedRequest, mockedResponse);
 
     expect(create).toHaveBeenCalledWith(mockedRequest.body);
     expect(mockedResponse.json).toHaveBeenCalledWith(mockedResult);

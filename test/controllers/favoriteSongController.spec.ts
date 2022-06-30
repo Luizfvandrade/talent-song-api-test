@@ -1,5 +1,4 @@
 jest.mock('../../src/services/favoriteSong/index');
-import { Request, Response } from 'express';
 
 import { FavoriteSongController } from '../../src/controllers/favoriteSongController';
 
@@ -13,11 +12,21 @@ const mockedResponse: any = {
   locals: { userId: 'a655b3d4-6ebd-4acc-8c18-88ddaba502ba' },
 };
 
+const mockedResult = {
+  'id': 'b64ad65c-96e1-4be3-8b7b-ecba01603bbf',
+  'userId': 'a655b3d4-6ebd-4acc-8c18-88ddaba502ba',
+  'songName': 'testSong',
+  'artist': 'testArtist',
+  'album': 'testAlbum'
+};
+
 describe('FavoriteSongController', () => {
   let favoriteSongController: FavoriteSongController;
 
   beforeEach(() => {
     favoriteSongController = new FavoriteSongController();
+
+    jest.clearAllMocks();
   });
 
   it('should be defined', () => {
@@ -26,15 +35,7 @@ describe('FavoriteSongController', () => {
 
   describe('successful', () => {
     it('should called favorite song create function', async () => {
-      const mockedResult = {
-        'id': 'b64ad65c-96e1-4be3-8b7b-ecba01603bbf',
-        'userId': 'a655b3d4-6ebd-4acc-8c18-88ddaba502ba',
-        'songName': 'testSong',
-        'artist': 'testArtist',
-        'album': 'testAlbum'
-      };
-
-      const mockedRequest: Partial<Request> = {
+      const mockedRequest: any = {
         body: {
           'songName': 'testSong',
           'artist': 'testArtist',
@@ -44,7 +45,7 @@ describe('FavoriteSongController', () => {
 
       (createFavoriteSong as any).mockResolvedValue(mockedResult);
 
-      await favoriteSongController.save(mockedRequest as Request, mockedResponse as Response);
+      await favoriteSongController.save(mockedRequest, mockedResponse);
 
       expect(createFavoriteSong).toHaveBeenCalledWith({ ...mockedRequest.body, ...mockedResponse.locals });
       expect(mockedResponse.json).toHaveBeenCalledWith(mockedResult);
@@ -52,15 +53,7 @@ describe('FavoriteSongController', () => {
     });
 
     it('should called favorite song find function', async () => {
-      const mockedResult = [{
-        'id': 'b64ad65c-96e1-4be3-8b7b-ecba01603bbf',
-        'userId': 'a655b3d4-6ebd-4acc-8c18-88ddaba502ba',
-        'songName': 'testSong',
-        'artist': 'testArtist',
-        'album': 'testAlbum'
-      }];
-
-      const mockedRequest: Partial<Request> = {
+      const mockedRequest: any = {
         query: {
           'songName': 'testSong',
           'artist': 'testArtist',
@@ -70,7 +63,7 @@ describe('FavoriteSongController', () => {
 
       (findFavoriteSong as any).mockResolvedValue(mockedResult);
 
-      await favoriteSongController.find(mockedRequest as any, mockedResponse as any);
+      await favoriteSongController.find(mockedRequest, mockedResponse);
 
       expect(findFavoriteSong).toHaveBeenCalledWith({ ...mockedRequest.query, ...mockedResponse.locals });
       expect(mockedResponse.json).toHaveBeenCalledWith(mockedResult);
@@ -78,15 +71,7 @@ describe('FavoriteSongController', () => {
     });
 
     it('should called favorite song update function', async () => {
-      const mockedResult = {
-        'id': 'b64ad65c-96e1-4be3-8b7b-ecba01603bbf',
-        'userId': 'a655b3d4-6ebd-4acc-8c18-88ddaba502ba',
-        'songName': 'testSong',
-        'artist': 'testArtist',
-        'album': 'testAlbum'
-      };
-
-      const mockedRequest: Partial<Request> = {
+      const mockedRequest: any = {
         body: {
           'songName': 'testSong',
           'artist': 'testArtist',
@@ -99,7 +84,7 @@ describe('FavoriteSongController', () => {
 
       (updateFavoriteSong as any).mockResolvedValue(mockedResult);
 
-      await favoriteSongController.update(mockedRequest as Request, mockedResponse as Response);
+      await favoriteSongController.update(mockedRequest, mockedResponse);
 
       expect(updateFavoriteSong).toHaveBeenCalledWith({ ...mockedRequest.body, ...mockedRequest.params });
       expect(mockedResponse.json).toHaveBeenCalledWith({ ...mockedResult });
@@ -107,7 +92,7 @@ describe('FavoriteSongController', () => {
     });
 
     it('should called favorite song delete function', async () => {
-      const mockedRequest = {
+      const mockedRequest: any = {
         params: {
           'id': 'b64ad65c-96e1-4be3-8b7b-ecba01603bbf',
         }
@@ -115,7 +100,7 @@ describe('FavoriteSongController', () => {
 
       (updateFavoriteSong as any).mockResolvedValue();
 
-      await favoriteSongController.delete(mockedRequest as any, mockedResponse as Response);
+      await favoriteSongController.delete(mockedRequest, mockedResponse);
 
       expect(deleteFavoriteSong).toHaveBeenCalledWith(mockedRequest.params.id);
       expect(mockedResponse.status).toHaveBeenCalledWith(204);
