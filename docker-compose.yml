@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    # environment:
+    #   - DATABASE_URL=postgres://root:postgres@localhost:5432/postgres?schema=talent
+    #   - SECRET_KEY=ddcfb50a06ef14202a7bc0c5f7388a5d
+    depends_on:
+      - "postgres"
+    links:
+      - "postgres"
+    env_file:
+      - .env.defaults
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=postgres
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    ports:
+      - '5432:5432'
