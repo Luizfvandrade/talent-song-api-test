@@ -1,4 +1,5 @@
 jest.mock('../../src/services/user');
+import { Request, Response } from 'express';
 
 import { UserController } from '../../src/controllers/userController';
 
@@ -15,27 +16,32 @@ describe('userController', () => {
     expect(userController).toBeDefined();
   });
 
-  it('should called user service', async () => {
-    const result = {
+  it('should called create user function', async () => {
+    const mockedResult = {
       'id': 'a655b3d4-6ebd-4acc-8c18-88ddaba502ba',
       'email': 'test@test.com'
     };
-    const req = {
+
+    const mockedRequest: Partial<Request> = {
       body: {
         email: 'test@test.com',
         password: '123'
       }
     };
 
-    const res = {
-      json: jest.fn()
+    const mockedResponse: any = {
+      json: jest.fn().mockImplementation((result) => {
+        jest.fn().mockReturnValue(result);
+      }),
+      status: jest.fn(() => mockedResponse)
     };
 
-    (create as any).mockResolvedValue(result);
+    (create as any).mockResolvedValue(mockedResult);
 
-    await userController.create(req as any, res as any);
+    await userController.create(mockedRequest as Request, mockedResponse as Response);
 
-    expect(create).toHaveBeenCalledWith(req.body);
-    expect(res.json).toHaveBeenCalledWith({ ...result });
+    expect(create).toHaveBeenCalledWith(mockedRequest.body);
+    expect(mockedResponse.json).toHaveBeenCalledWith(mockedResult);
+    expect(mockedResponse.status).toHaveBeenCalledWith(201);
   });
 });
