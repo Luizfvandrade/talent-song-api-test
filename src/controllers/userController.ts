@@ -10,7 +10,7 @@ class UserController {
       password,
     });
 
-    return res.json(result);
+    return res.status(201).json(result);
   }
 }
 
