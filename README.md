@@ -8,8 +8,6 @@ git clone https://github.com/Luizfvandrade/talent-song-api-test
 cd talent-song-api-test
 
 yarn
-
-yarn prisma migrate dev
 ```
 
 ### Compiles and hot-reloads with linter server for development
@@ -51,14 +49,14 @@ docker-compose build
 ### Execute the container with env files
 
 ```bash
-docker-compose --env-file ./.env.defaults up
+docker-compose up
 ```
 
 
 ### Run prisma migration 
 
 ```bash
-yarn prisma migrate dev
+yarn migrate:dev
 ```
 
 ### Dev Team
