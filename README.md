@@ -40,6 +40,25 @@ yarn test
 yarn lint
 ```
 
+## Running with docker container
+### Build container
+```bash
+docker-compose build
+```
+
+### Execute the container with env files
+
+```bash
+docker-compose --env-file ./.env.defaults up
+```
+
+
+### Run prisma migration 
+
+```bash
+yarn prisma migrate dev
+```
+
 ### Dev Team
 
 This project exists thanks to all these people.
