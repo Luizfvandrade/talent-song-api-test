@@ -5,9 +5,11 @@
 ```bash
 git clone https://github.com/Luizfvandrade/talent-song-api-test
 
-cd talent
+cd talent-song-api-test
 
 yarn
+
+yarn prisma migrate dev
 ```
 
 ### Compiles and hot-reloads with linter server for development

@@ -4,9 +4,6 @@ services:
     build: .
     ports:
       - "3000:3000"
-    # environment:
-    #   - DATABASE_URL=postgres://root:postgres@localhost:5432/postgres?schema=talent
-    #   - SECRET_KEY=ddcfb50a06ef14202a7bc0c5f7388a5d
     depends_on:
       - "postgres"
     links:
