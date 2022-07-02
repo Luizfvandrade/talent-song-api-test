@@ -14,6 +14,21 @@ jest.mock(
   { virtual: true },
 );
 
+jest.mock(
+  'isemail',
+  () => {
+    return {
+      validate: jest.fn((email) => {
+        if (email === 'test@test.com') {
+          return true;
+        }
+        return false;
+      }),
+    };
+  },
+  { virtual: true },
+);
+
 describe('user create function', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -46,6 +61,21 @@ describe('user create function', () => {
         password: mockedUser.password
       }
     });
+  });
+
+  it('should throw invalid e-mail! error', async () => {
+    const mockedBody = {
+      'email': 'test',
+      'password': '123',
+    };
+
+    try {
+      await create(mockedBody);
+    } catch (error) {
+      expect(db.users.create).toBeCalledTimes(0);
+      // eslint-disable-next-line quotes
+      expect(error).toMatchInlineSnapshot(`[Error: Invalid e-mail!]`);
+    }
   });
 
   it('should throw user already exists error', async () => {
