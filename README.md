@@ -1,10 +1,6 @@
 # 🎶 talent-song-api-test
 
-**Song Api** is a Api used to create a simple list of your favorite songs: 
-- you can add a new song in your list,
-- you can update a song if you added incorrectly,
-- you can delete a song if you don't like it anymore,
-- and of course, you can listing your songs.
+**Song Api** is a Api used to create a simple list of your favorite songs. You can test the api [here](http://localhost:3000/api-docs)
 
 > **Table of contents**
 > - [🔍 Requirements](#requirements)
@@ -33,6 +29,8 @@
 - Auth
   - [BCryptjs](https://www.npmjs.com/package/bcrypt)
   - [JsonWebToken](www.npmjs.com/package/jsonwebtoken)
+- Documentation
+  - [Swagger.io](https://swagger.io/docs/)
 
 ## <a name="project-setup"></a> 🔨 Project setup
 

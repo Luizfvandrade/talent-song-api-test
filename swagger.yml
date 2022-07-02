@@ -12,7 +12,7 @@ components:
       scheme: bearer
       bearerFormat: JWT
 paths:
-  /createUser:
+  /user:
     post:
       tags:
         - users
