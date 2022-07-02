@@ -1,5 +1,6 @@
 import { hash } from 'bcryptjs';
 import db from '../database/prismaClient';
+import { validate } from 'isemail';
 
 interface ICreateUser {
   email: string
@@ -7,6 +8,12 @@ interface ICreateUser {
 }
 
 async function create({ email, password }: ICreateUser) {
+  const emailValidation = validate(email);
+
+  if (!emailValidation) {
+    throw new Error('Invalid e-mail!');
+  }
+
   const userExists = await db.users.findFirst({
     where: {
       email: {
