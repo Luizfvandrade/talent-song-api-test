@@ -1,66 +1,94 @@
-# 🚀 talent-song-api-test
+# 🎶 talent-song-api-test
 
-## Project setup
+**Song Api** is a Api used to create a simple list of your favorite songs: 
+- you can add a new song in your list,
+- you can update a song if you added incorrectly,
+- you can delete a song if you don't like it anymore,
+- and of course, you can listing your songs.
+
+> **Table of contents**
+> - [🔍 Requirements](#requirements)
+> - [💻 Technologies](#technologies)
+> - [🔨 Project setup](#project-setup)
+> - [🐳 Running with docker-compose](#running-docker-compose)
+> - [▶️ Running locally](#running-locally)
+> - [🧪️ Running tests](#running-tests)
+> - [📉 Running coverage](#running-coverage)
+> - [💅 Running linter](#running-linter)
+
+
+## <a name="requirements"></a> 🔍 Requirements
+| Dependencies                                 | Description               |
+| -------------------------------------------- | ------------------------- |
+| [![node-version]][node-download]             | Javascript Runtime        |
+| [![docker-version]][docker-download]         | Virtualization containers |
+
+## <a name="technologies"></a> 💻 Technologies
+
+- [Express](https://expressjs.com/pt-br/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Prisma.io](https://www.prisma.io/)
+- Tests
+  - [Jest](https://jestjs.io/pt-BR/)
+- Auth
+  - [BCryptjs](https://www.npmjs.com/package/bcrypt)
+  - [JsonWebToken](www.npmjs.com/package/jsonwebtoken)
+
+## <a name="project-setup"></a> 🔨 Project setup
 
 ```bash
+# Clone repository
 git clone https://github.com/Luizfvandrade/talent-song-api-test
 
+# Enter the cloned repository folder
 cd talent-song-api-test
 
+# Install the dependencies
 yarn
 ```
 
-### Compiles and hot-reloads with linter server for development
+## <a name="running-docker-compose"></a> 🐳 Running with docker-compose
+```bash
+# Build container
+docker-compose build
+
+# Execute container
+docker-compose up -d
+
+# Run prisma migration
+yarn migrate:dev
+```
+## <a name="running-locally"></a> ▶️ Running locally
 
 ```bash
 yarn dev
 ```
+## <a name="running-tests"></a> 🧪️ Running tests
 
-### Run coverage
+### Run e2e tests
+
+```bash
+yarn test:e2e
+```
+
+### Run unit tests
+
+```bash
+yarn test:unit
+```
+
+## <a name="running-coverage"></a> 📉 Running coverage
 
 ```bash
 yarn coverage
 ```
 
-### Run tests for development
-
-```bash
-yarn test:tdd
-```
-
-### Run tests
-
-```bash
-yarn test
-```
-
-### Run linter
+## <a name="running-linter"></a> 💅 Running linter
 
 ```bash
 yarn lint
 ```
-
-## Running with docker container
-### Build container
-```bash
-docker-compose build
-```
-
-### Execute the container with env files
-
-```bash
-docker-compose up
-```
-
-
-### Run prisma migration 
-
-```bash
-yarn migrate:dev
-```
-
-### Dev Team
-
-This project exists thanks to all these people.
-
-![Luiz Felippe Vieira de Andrade](https://avatars.githubusercontent.com/u/42068673?s=100&u=a15172f334291d1c96f5d239be849bd54e4c6c7a&v=4)
+[node-download]: https://nodejs.org/download/release/v14.14.0/
+[docker-download]: https://docs.docker.com/engine/install/
+[node-version]: https://img.shields.io/badge/node-latest-blue
+[docker-version]: https://img.shields.io/badge/docker-v14.x.x-blue
