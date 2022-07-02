@@ -1,8 +1,13 @@
-jest.mock('../../src/services/favoriteSong/index');
+jest.mock('../../../src/services/favoriteSong/index');
 
-import { FavoriteSongController } from '../../src/controllers/favoriteSongController';
+import { FavoriteSongController } from '../../../src/controllers/favoriteSongController';
 
-import { createFavoriteSong, findFavoriteSong, updateFavoriteSong, deleteFavoriteSong } from '../../src/services/favoriteSong/index';
+import {
+  createFavoriteSong,
+  findFavoriteSong,
+  updateFavoriteSong,
+  deleteFavoriteSong
+} from '../../../src/services/favoriteSong/index';
 
 const mockedResponse: any = {
   json: jest.fn().mockImplementation((result) => {

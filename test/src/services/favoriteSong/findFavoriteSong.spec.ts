@@ -1,8 +1,8 @@
-jest.mock('../../../src/database/prismaClient');
+jest.mock('../../../../src/database/prismaClient');
 
-import db from '../../../src/database/prismaClient';
+import db from '../../../../src/database/prismaClient';
 
-import { findFavoriteSong } from '../../../src/services/favoriteSong/index';
+import { findFavoriteSong } from '../../../../src/services/favoriteSong/index';
 
 describe('findFavoriteSong function', () => {
   beforeEach(() => {

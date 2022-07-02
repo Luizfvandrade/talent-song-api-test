@@ -1,4 +1,4 @@
-jest.mock('../../src/database/prismaClient');
+jest.mock('../../../src/database/prismaClient');
 
 import db from '../../../src/database/prismaClient';
 

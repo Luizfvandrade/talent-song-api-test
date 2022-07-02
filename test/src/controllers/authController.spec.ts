@@ -1,8 +1,8 @@
-jest.mock('../../src/services/auth');
+jest.mock('../../../src/services/auth');
 
-import { AuthController } from '../../src/controllers/authController';
+import { AuthController } from '../../../src/controllers/authController';
 
-import { login } from '../../src/services/auth';
+import { login } from '../../../src/services/auth';
 
 describe('AuthUserController', () => {
   let authUserController: AuthController;

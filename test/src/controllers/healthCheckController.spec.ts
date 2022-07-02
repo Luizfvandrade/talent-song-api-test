@@ -1,4 +1,4 @@
-import { HealthCheckController } from '../../src/controllers/healthCheckController';
+import { HealthCheckController } from '../../../src/controllers/healthCheckController';
 
 const mockedResponse: any = {
   json: jest.fn().mockImplementation((result) => {

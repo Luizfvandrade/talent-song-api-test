@@ -1,8 +1,8 @@
-jest.mock('../../src/services/user');
+jest.mock('../../../src/services/user');
 
-import { UserController } from '../../src/controllers/userController';
+import { UserController } from '../../../src/controllers/userController';
 
-import { create } from '../../src/services/user';
+import { create } from '../../../src/services/user';
 
 describe('userController', () => {
   let userController: UserController;
