@@ -1,0 +1,232 @@
+openapi: 3.0.1
+info:
+  title: talent-song-api-test
+  description: "**Song Api** is a Api used to create a simple list of your favorite songs"
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /createUser:
+    post:
+      tags:
+        - users
+      summary: Create your user account in api
+      requestBody:
+        description: Account object that needs to be create your user in api
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "test@test.com"
+                password:
+                  type: string
+                  example: "123"
+        required: true
+      responses:
+        201:
+          description: Your id in api and email
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  email:
+                    type: string
+  /login:
+    post:
+      tags:
+        - users
+      summary: Login in your user account in api
+      requestBody:
+        description: Account object that needs to be login in api
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "test@test.com"
+                password:
+                  type: string
+                  example: "123"
+        required: true
+      responses:
+        200:
+          description: Your jwt token to authorize you in favorite songs routes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+  /favorite-songs/:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - favorite-songs
+      summary: Create a favorite song in your list
+      requestBody:
+        description: Favorite song object that needs to be saved in your list
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                songName:
+                  type: string
+                  example: "testSongName"
+                artist:
+                  type: string
+                  example: "testArtist"
+                album:
+                  type: string
+                  example: "testAlbum"
+        required: true
+      responses:
+        201:
+          description: Your favorite song updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  userId:
+                    type: string
+                  songName:
+                    type: string
+                  artist:
+                    type: string
+                  album:
+                    type: string
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - favorite-songs
+      summary: Show your favorite songs list
+      parameters:
+        - in: query
+          name: songName
+          schema:
+            type: string
+        - in: query
+          name: artist
+          schema:
+            type: string
+        - in: query
+          name: album
+          schema:
+            type: string
+      responses:
+        200:
+          description: Your favorite songs list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  userId:
+                    type: string
+                  songName:
+                    type: string
+                  artist:
+                    type: string
+                  album:
+                    type: string
+  /favorite-songs/{id}:
+    put:
+      security:
+        - bearerAuth: []
+      tags:
+        - favorite-songs
+      summary: Update an existing favorite song of your list
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: id of your favorite song to update
+      requestBody:
+        description: Favorite song object that needs to be update in your list
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                songName:
+                  type: string
+                  example: "testSongName"
+                artist:
+                  type: string
+                  example: "testArtist"
+                album:
+                  type: string
+                  example: "testAlbum"
+        required: true
+      responses:
+        200:
+          description: Your favorite song updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  userId:
+                    type: string
+                  songName:
+                    type: string
+                  artist:
+                    type: string
+                  album:
+                    type: string
+    delete:
+      security:
+        - bearerAuth: []
+      tags:
+        - favorite-songs
+      summary: Delete an existing favorite song of your list
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: id of your favorite song to delete
+      responses:
+        204:
+          description: No content
+  /healthCheck:
+    get:
+      tags:
+        - health-check
+      responses:
+        200:
+          description: Api is up running
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string

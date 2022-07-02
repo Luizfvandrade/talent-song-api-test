@@ -32,6 +32,7 @@ RUN yarn
 
 COPY --from=builder /api/build ./code
 COPY --from=builder /api/prisma ./prisma
+COPY --from=builder /api/swagger.yml ./swagger.yml
 
 RUN yarn prisma generate
 

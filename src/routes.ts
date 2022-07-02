@@ -1,4 +1,8 @@
 import { Router } from 'express';
+
+import YAML from 'yamljs';
+import swaggerUi from 'swagger-ui-express';
+
 import { UserController } from './controllers/userController';
 import { AuthController } from './controllers/authController';
 import { FavoriteSongController } from './controllers/favoriteSongController';
@@ -7,6 +11,10 @@ import { HealthCheckController } from './controllers/healthCheckController';
 import { ensureAuth } from './middlewares/ensureAuth';
 
 const router = Router();
+const swaggerDocument = YAML.load('./swagger.yml');
+
+router.use('/api-docs', swaggerUi.serve);
+router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 const userController = new UserController();
 const authController = new AuthController();
