@@ -1,7 +1,13 @@
-import { Prisma } from '@prisma/client';
 import db from '../../database/prismaClient';
 
-async function createFavoriteSong({ userId, songName, artist, album }: Prisma.FavoriteSongsCreateManyInput) {
+interface ICreateFavoriteSong {
+  userId: string
+  songName: string
+  artist: string
+  album: string
+}
+
+async function createFavoriteSong({ userId, songName, artist, album }: ICreateFavoriteSong) {
   const song = await db.favoriteSongs.create({
     data: {
       userId,
