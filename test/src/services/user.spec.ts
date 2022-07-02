@@ -1,8 +1,8 @@
 jest.mock('../../src/database/prismaClient');
 
-import db from '../../src/database/prismaClient';
+import db from '../../../src/database/prismaClient';
 
-import { create } from '../../src/services/user';
+import { create } from '../../../src/services/user';
 
 jest.mock(
   'bcryptjs',
