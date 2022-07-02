@@ -17,7 +17,7 @@ async function create({ email, password }: ICreateUser) {
   });
 
   if (userExists) {
-    throw new Error('Client already exists!');
+    throw new Error('User already exists!');
   }
 
   const encryptedPass = await hash(password, 10);
