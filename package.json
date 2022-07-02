@@ -9,8 +9,8 @@
     "dev": "ts-node-dev -r ./src/env.ts ./src/app.ts",
     "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" \"test/**/*.ts\" --fix",
-    "test": "jest",
-    "test:tdd": "jest --watch",
+    "test:unit": "jest",
+    "test:e2e": "jest --watch",
     "coverage": "jest --coverage",
     "build": "tsc",
     "migrate:dev": "dotenv-extended --defaults=.env.local prisma migrate dev"
