@@ -1,6 +1,6 @@
 # 🎶 talent-song-api-test
 
-**Song Api** is a Api used to create a simple list of your favorite songs. You can test the api [here](http://localhost:3000/api-docs)
+**Song Api** is a Api used to create a simple list of your favorite songs. You can test the api [here](https://talent-song-api-test.herokuapp.com/api-docs)
 
 > **Table of contents**
 > - [🔍 Requirements](#requirements)
@@ -34,6 +34,7 @@
 - Documentation
   - [Swagger.io](https://swagger.io/docs/)
 
+
 ## <a name="project-setup"></a> 🔨 Project setup
 
 ```bash
@@ -47,6 +48,7 @@ cd talent-song-api-test
 yarn
 ```
 
+
 ## <a name="running-docker-compose"></a> 🐳 Running with docker-compose
 ```bash
 # Build container
@@ -58,11 +60,15 @@ docker-compose up -d
 # Run prisma migration
 yarn migrate:dev
 ```
+
+
 ## <a name="running-locally"></a> ▶️ Running locally
 
 ```bash
 yarn dev
 ```
+
+
 ## <a name="running-tests"></a> 🧪️ Running unit tests
 
 ```bash
@@ -80,6 +86,8 @@ yarn coverage
 ```bash
 yarn lint
 ```
+
+
 [node-download]: https://nodejs.org/download/release/v14.14.0/
 [yarn-download]: https://classic.yarnpkg.com/lang/en/docs/install#windows-stable
 [docker-download]: https://docs.docker.com/engine/install/
