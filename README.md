@@ -8,7 +8,7 @@
 > - [🔨 Project setup](#project-setup)
 > - [🐳 Running with docker-compose](#running-docker-compose)
 > - [▶️ Running locally](#running-locally)
-> - [🧪️ Running tests](#running-tests)
+> - [🧪️ Running unit tests](#running-tests)
 > - [📉 Running coverage](#running-coverage)
 > - [💅 Running linter](#running-linter)
 
@@ -17,7 +17,9 @@
 | Dependencies                                 | Description               |
 | -------------------------------------------- | ------------------------- |
 | [![node-version]][node-download]             | Javascript Runtime        |
+| [![yarn-version]][yarn-download]             | Dependency Manager        |
 | [![docker-version]][docker-download]         | Virtualization containers |
+
 
 ## <a name="technologies"></a> 💻 Technologies
 
@@ -61,15 +63,7 @@ yarn migrate:dev
 ```bash
 yarn dev
 ```
-## <a name="running-tests"></a> 🧪️ Running tests
-
-### Run e2e tests
-
-```bash
-yarn test:e2e
-```
-
-### Run unit tests
+## <a name="running-tests"></a> 🧪️ Running unit tests
 
 ```bash
 yarn test:unit
@@ -87,6 +81,8 @@ yarn coverage
 yarn lint
 ```
 [node-download]: https://nodejs.org/download/release/v14.14.0/
+[yarn-download]: https://classic.yarnpkg.com/lang/en/docs/install#windows-stable
 [docker-download]: https://docs.docker.com/engine/install/
 [node-version]: https://img.shields.io/badge/node-latest-blue
+[yarn-version]: https://img.shields.io/badge/yarn-latest-blue
 [docker-version]: https://img.shields.io/badge/docker-v14.x.x-blue
