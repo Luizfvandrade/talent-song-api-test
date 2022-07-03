@@ -2,11 +2,14 @@
   "name": "talent-song-api-test",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/Luizfvandrade/talent-song-api-test.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luizfvandrade/talent-song-api-test.git"
+  },
   "author": "lzpp3 <luizfelippevieira@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r ./src/env.ts ./src/app.ts",
+    "start": "ts-node-dev -r ./src/env.ts ./src/app.ts",
     "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" \"test/**/*.ts\" --fix",
     "test:unit": "jest",
@@ -43,5 +46,13 @@
     "swagger-ui-express": "^4.4.0",
     "uuid": "^8.3.2",
     "yamljs": "^0.3.0"
+  },
+  "description": "**Song Api** is a Api used to create a simple list of your favorite songs.",
+  "bugs": {
+    "url": "https://github.com/Luizfvandrade/talent-song-api-test/issues"
+  },
+  "homepage": "https://github.com/Luizfvandrade/talent-song-api-test#readme",
+  "directories": {
+    "test": "test"
   }
 }
