@@ -28,7 +28,7 @@ ENV NODE_ENV=production
 COPY ./package.json package.json
 COPY ./yarn.lock yarn.lock
 
-RUN yarn
+RUN yarn --production
 
 COPY --from=builder /api/build ./code
 COPY --from=builder /api/prisma ./prisma

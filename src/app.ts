@@ -3,7 +3,7 @@ import 'express-async-errors';
 import { router as routes } from './routes';
 import { Request, Response } from 'express';
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 import { errorHandler } from './middlewares/errorHandler';
 
@@ -14,4 +14,4 @@ app.use(routes);
 app.use(errorHandler);
 
 app.get('/', (req: Request, res: Response) => res.json({ message: 'Server is up running!' }));
-app.listen(port || 3000, () => console.log(`Server is up running in port: ${port}!`));
+app.listen(port, () => console.log(`Server is up running in port: ${port}!`));
